@@ -1,0 +1,41 @@
+version: '3.8'
+services:
+  dapr:
+    image: "daprio/daprd:edge"
+    environment:
+      - NAMESPACE=local
+    command: [
+      "./daprd",
+      "--app-id", "MyApp",
+      "--app-protocol", "http",
+      "--log-level", "debug",
+      "--app-port", "5000",
+      "--dapr-http-port", "3500",
+      "--dapr-grpc-port", "50001",
+      "--app-channel-address", "host.docker.internal",
+      "--resources-path", "/components",
+      "--resources-path", "/components/local",
+      "--resources-path", "/components/aspire"
+    ]
+    ports:
+      - "3500"
+      - "50001"
+    volumes:
+      - "./../dapr_components/:/components"
+    networks:
+      - dapr_network
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      SA_PASSWORD: mypassword&*+_123
+      ACCEPT_EULA: Y
+    volumes:
+      - storage:/var/opt/mssql
+    networks:
+      - dapr_network
+    ports:
+      - "1666:1433"
+volumes:
+  storage:
+networks:
+  dapr_network:

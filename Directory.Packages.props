@@ -1,0 +1,79 @@
+<Project>
+  <PropertyGroup>
+    <!-- Enable central package management -->
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+  <ItemGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
+    <Using Include="FluentAssertions" />
+    <Using Include="FluentAssertions.Execution" />
+    <Using Include="Xunit" />
+    <Using Include="FakeItEasy" />
+  </ItemGroup>
+  <ItemGroup>
+    <Using Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Global dependencies -->
+    <GlobalPackageReference Include="Roslynator.Analyzers" Version="4.6.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </GlobalPackageReference>
+    <GlobalPackageReference Include="Roslynator.Formatting.Analyzers" Version="4.6.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </GlobalPackageReference>
+    <!--  Aspire  -->
+    <PackageVersion Include="Aspire.Hosting" Version="8.0.0-preview.3.23611.3" />
+    <PackageVersion Include="Aspire.Hosting.Dapr" Version="8.0.0-preview.3.23611.3" />
+    <PackageVersion Include="Aspire.Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0-preview.3.23611.3" />
+
+    <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="8.0.0"/>
+    <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery" Version="8.0.0-preview.1.23557.2"/>
+    <PackageVersion Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.7.0-alpha.1"/>
+    <PackageVersion Include="OpenTelemetry.Extensions.Hosting" Version="1.7.0-alpha.1"/>
+    <PackageVersion Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.6.0-beta.2"/>
+    <PackageVersion Include="OpenTelemetry.Instrumentation.GrpcNetClient" Version="1.6.0-beta.2"/>
+    <PackageVersion Include="OpenTelemetry.Instrumentation.Http" Version="1.6.0-beta.2"/>
+    <PackageVersion Include="OpenTelemetry.Instrumentation.Runtime" Version="1.5.1"/>
+    
+    <!-- Test depencencies -->
+    <PackageVersion Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+    <PackageVersion Include="Microsoft.Playwright" Version="1.36.0" />
+    <PackageVersion Include="FluentAssertions" Version="6.12.0" />
+    <PackageVersion Include="FluentResults.Extensions.FluentAssertions" Version="2.1.1" />
+    <PackageVersion Include="xunit" Version="2.6.2" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="2.5.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageVersion>
+    <PackageVersion Include="coverlet.collector" Version="6.0.0" />
+    <PackageVersion Include="FakeItEasy.Analyzer.CSharp" Version="6.1.1" />
+    <PackageVersion Include="FakeItEasy" Version="8.0.0" />
+    <PackageVersion Include="Testcontainers" Version="3.6.0" />
+    <PackageVersion Include="Testcontainers.MsSql" Version="3.6.0" />
+    <!--  CommunityToolkit  -->
+    <PackageVersion Include="CommunityToolkit.Diagnostics" Version="8.2.2" />
+    <!-- AspNetCore -->
+    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="8.0.0" />
+    <!--    EF Core-->
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0" />
+    <!--System.Net.Http -->
+    <PackageVersion Include="System.Net.Http.Json" Version="8.0.0" />
+    <!-- Swagger -->
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <!-- Cloud Events -->
+    <PackageVersion Include="CloudNative.CloudEvents" Version="2.7.1" />
+    <PackageVersion Include="CloudNative.CloudEvents.SystemTextJson" Version="2.7.1" />
+    <!--  Dapr -->
+    <PackageVersion Include="Dapr.Client" Version="1.12.0" />
+    <PackageVersion Include="Dapr.AspNetCore" Version="1.12.0" />
+    <!-- Linq -->
+    <PackageVersion Include="System.Linq.Async" Version="6.0.1" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,27 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: MyStateStore
+  namespace: local
+spec:
+  type: state.sqlserver
+  version: v1
+  metadata:
+    # Authenticate using SQL Server credentials
+    - name: connectionString
+      secretKeyRef:
+        name: stateStorePassword
+        key: stateStorePassword
+    # Other optional fields (listing default values)
+    # - name: schema
+    #   value: "dbo"
+    # - name: keyType
+    # value: "string"
+    # - name: keyLength
+    # value: "200"
+    # - name: indexedProperties
+    # value: ""
+    # - name: cleanupIntervalInSeconds
+    # value: "3600"
+auth:
+  secretStore: state-store-secret-store
